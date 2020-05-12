@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/image_body"
+    android:layout_width="@dimen/body_image_size"
+    android:layout_height="@dimen/body_image_size"
+    tools:srcCompat="@tools:sample/avatars">
+
+</ImageView>

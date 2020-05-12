@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">DUT云毕业照</string>
+    <string name="about_activity">About</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">→</string>
+    <string name="previous">←</string>
+    <string name="background">←←</string>
+    <string name="people">←</string>
+    <string name="output">输出图片</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="storage_permissions_remind">该权限用于拍照使用，还请您允许。</string>
+    <string name="title_activity_scrolling">About</string>
+    <string name="large_text">\n
+        所爱隔山海，山海皆可平\n\n
+        愿一张“云”毕业照可以跨越时间、空间\n\n
+        让你和大工、和大工的TA永远牵挂\n\n
+        \n\n
+        【特别说明：本APP是纯粹的学生个人项目，不代表任何官方，初衷只是为毕业生做一些力所能及的事情，具体毕业安排请等候学校官方通知】\n
+        \n\n
+        欢迎有想法、有能力、有意愿的小伙伴联系我们\n
+    </string>
+    <string name="action_settings">Settings</string>
+    <string name="add_friend">点击此处添加自定义照片哦</string>
+</resources>

@@ -1,0 +1,2 @@
+rootProject.name='云毕业照'
+include ':app', ':sticker', ':opencv'

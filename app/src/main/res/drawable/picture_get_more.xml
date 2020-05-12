@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingStart="@dimen/picture_more_padding"
+    android:paddingTop="@dimen/picture_more_padding"
+    android:paddingEnd="@dimen/picture_more_padding"
+    android:paddingBottom="@dimen/picture_more_padding"
+    android:paddingMode="nest">
+
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#f0f0f0" />
+            <corners android:radius="24dp" />
+            <stroke
+                android:width="8dp"
+                android:color="#999" />
+
+        </shape>
+    </item>
+    <item>
+        <inset
+            android:drawable="@drawable/ic_more"
+            android:insetLeft="@dimen/ic_more_padding"
+            android:insetTop="@dimen/ic_more_padding"
+            android:insetRight="@dimen/ic_more_padding"
+            android:insetBottom="@dimen/ic_more_padding" />
+    </item>
+</layer-list>
