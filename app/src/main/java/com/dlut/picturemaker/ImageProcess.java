@@ -58,7 +58,7 @@ public class ImageProcess {
 
     public static void getHeads(SecondFragment secondFragment, String path) {
         Log.d(TAG, "getHeads: path is " + path);
-        Bitmap image = ImageUtils.getBitmap(path,1024,1024);
+        Bitmap image = ImageUtils.getBitmap(path, 1024, 1024);
         String newPath = PathUtils.getExternalAppDataPath() + File.separator + TimeUtils.getNowString() + ".jpg";
         ImageUtils.save(image, newPath, Bitmap.CompressFormat.JPEG);
         ThreadUtils.executeBySingle(new HeadTask(secondFragment, newPath));
@@ -99,7 +99,7 @@ public class ImageProcess {
                 BODY_NECK_X = 155;
                 BODY_NECK_Y = 250;
                 break;
-                case 2:
+            case 2:
                 try {
                     body = Utils.loadResource(mContext, R.drawable.muban3);
                     Imgproc.cvtColor(body, body, Imgproc.COLOR_BGRA2RGBA);
@@ -253,6 +253,12 @@ public class ImageProcess {
             Mat originMat = new Mat();
             Utils.bitmapToMat(originImage, originMat);
             Rect rect = Imgproc.boundingRect(pts);
+            if (rect.x + rect.width > originImage.getWidth()) {
+                rect.width -= 1;
+            }
+            if (rect.y + rect.height > originImage.getHeight()) {
+                rect.height -= 1;
+            }
             Mat croppedMat = originMat.submat(rect);
 
             Point movedPt1 = new Point(x1 - xmin, y1 - ymin);
