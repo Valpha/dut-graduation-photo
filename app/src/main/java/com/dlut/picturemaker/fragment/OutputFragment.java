@@ -41,6 +41,8 @@ public class OutputFragment extends Fragment {
         view.findViewById(R.id.button_background).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                model.clearPerson();
+
                 NavHostFragment.findNavController(OutputFragment.this)
                         .navigate(R.id.action_outputFragment_to_FirstFragment);
             }
