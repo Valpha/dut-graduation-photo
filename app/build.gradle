@@ -8,8 +8,8 @@ android {
         applicationId "com.dlut.picturemaker"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.1.2"
+        versionCode 5
+        versionName "1.2.0"
         ndk {
             abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
@@ -53,6 +53,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.blankj:utilcode:1.25.9'
 //    implementation 'com.lcw.library:StickeView:1.0.1'
+    implementation 'com.easyandroid:easytools:2.0.0'
     implementation project(path: ':sticker')
     implementation 'com.alibaba:fastjson:1.2.68'
     implementation 'com.baidu.aip:java-sdk:4.12.0'

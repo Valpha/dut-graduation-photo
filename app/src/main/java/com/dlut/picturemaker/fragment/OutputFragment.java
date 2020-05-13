@@ -18,6 +18,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.blankj.utilcode.util.IntentUtils;
 import com.dlut.picturemaker.ViewModel.ImageViewModel;
 import com.dlut.picturemaker.R;
+import com.easytools.tools.BitmapUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
@@ -50,12 +51,12 @@ public class OutputFragment extends Fragment {
 
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(view1 -> {
-            Intent intent = IntentUtils.getShareImageIntent("分享", model.getFinishedFile().getAbsoluteFile());
+            Intent intent = IntentUtils.getShareImageIntent("分享", model.getFinishedImageUri());
             startActivity(intent);
 
         });
         imageViewThumb = view.findViewById(R.id.image_thumb);
-        imageViewThumb.setImageBitmap(BitmapFactory.decodeFile(model.getFinishedFile().getAbsolutePath()));
+        imageViewThumb.setImageBitmap(BitmapUtils.getBitmapFromUri(getContext(),model.getFinishedImageUri()));
     }
 
     @Override

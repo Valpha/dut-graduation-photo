@@ -1,4 +1,4 @@
-package com.dlut.picturemaker;
+package com.dlut.picturemaker.utils;
 
 import android.content.Context;
 

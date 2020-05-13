@@ -1,9 +1,10 @@
-package com.dlut.picturemaker;
+package com.dlut.picturemaker.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
@@ -14,10 +15,13 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.PathUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.TimeUtils;
+import com.blankj.utilcode.util.UriUtils;
+import com.dlut.picturemaker.R;
 import com.dlut.picturemaker.data.DataBean;
 import com.dlut.picturemaker.entity.KeyPointEntity;
 import com.dlut.picturemaker.entity.SegmentEntity;
 import com.dlut.picturemaker.fragment.SecondFragment;
+import com.dlut.picturemaker.utils.MyUtils;
 import com.tencent.bugly.crashreport.CrashReport;
 
 import org.json.JSONObject;
@@ -59,8 +63,10 @@ public class ImageProcess {
     public static void getHeads(SecondFragment secondFragment, String path) {
         Log.d(TAG, "getHeads: path is " + path);
         Bitmap image = ImageUtils.getBitmap(path, 1024, 1024);
-        String newPath = PathUtils.getExternalAppDataPath() + File.separator + TimeUtils.getNowString() + ".jpg";
-        ImageUtils.save(image, newPath, Bitmap.CompressFormat.JPEG);
+        // File cache = secondFragment.getActivity().getExternalCacheDir();
+        // File newFile = new File(cache,TimeUtils.getNowString() + ".jpg" );
+        String newPath = MyUtils.saveBitmap(image, "HEAD_" + TimeUtils.getNowString(), secondFragment.getActivity());
+        // ImageUtils.save(image, newFile, Bitmap.CompressFormat.JPEG);
         ThreadUtils.executeBySingle(new HeadTask(secondFragment, newPath));
     }
 

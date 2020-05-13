@@ -23,17 +23,16 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.blankj.utilcode.util.FileUtils;
-import com.blankj.utilcode.util.PathUtils;
 import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
-import com.dlut.picturemaker.GlideEngine;
-import com.dlut.picturemaker.ImageProcess;
+import com.dlut.picturemaker.utils.GlideEngine;
+import com.dlut.picturemaker.utils.ImageProcess;
 import com.dlut.picturemaker.R;
 import com.dlut.picturemaker.ViewModel.ImageViewModel;
 import com.dlut.picturemaker.adapter.AdapterHead;
 import com.dlut.picturemaker.adapter.AdapterTemplete;
 import com.dlut.picturemaker.data.DataBean;
+import com.dlut.picturemaker.utils.MyUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
@@ -57,6 +56,7 @@ import com.zyao89.view.zloading.Z_TYPE;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+
 
 public class SecondFragment extends Fragment {
     private static final String TAG = "second";
@@ -87,6 +87,11 @@ public class SecondFragment extends Fragment {
 
     }
 
+
+
+
+
+
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -103,12 +108,19 @@ public class SecondFragment extends Fragment {
         view.findViewById(R.id.button_next).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String path = PathUtils.getExternalPicturesPath() + "/云合影/" + TimeUtils.getNowString() + ".jpg";
-                File file = new File(path);
-                FileUtils.createOrExistsFile(file);
-                stickerView.save(file);
-                ToastUtils.showShort("saved in " + file.getAbsolutePath());
-                model.setFinishedImage(file);
+
+                // String path = PathUtils.getExternalPicturesPath() + "/云合影/" + TimeUtils.getNowString() + ".jpg";
+                // File file = new File(path);
+                // FileUtils.createOrExistsFile(file);
+                // stickerView.save(file);
+
+                Uri uri = MyUtils.saveToDcim(stickerView.createBitmap(), "IMG_" + TimeUtils.getNowMills() + ".jpg", getActivity());
+                // saveImage(stickerView.createBitmap())
+                if (uri != null) {
+                    model.setFinishedImageUri(uri);
+                    ToastUtils.showShort("saved in " + uri.getPath());
+                }
+                // model.setFinishedImage(file);
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_outputFragment);
             }
@@ -125,8 +137,9 @@ public class SecondFragment extends Fragment {
                         @Override
                         public void onResult(List<LocalMedia> result) {
                             String path;
-                            if (Build.VERSION_CODES.CUR_DEVELOPMENT == Build.VERSION_CODES.Q) {
+                            if (Build.VERSION.SDK_INT == Build.VERSION_CODES.Q) {
                                 path = result.get(0).getAndroidQToPath();
+                                // path = result.get(0).getPath();
                             } else {
                                 path = result.get(0).getPath();
                             }

@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.blankj.utilcode.util.ImageUtils;
-import com.dlut.picturemaker.GlideEngine;
+import com.dlut.picturemaker.utils.GlideEngine;
 import com.dlut.picturemaker.R;
 import com.dlut.picturemaker.ViewModel.ImageViewModel;
 import com.dlut.picturemaker.adapter.PictureAdapter;
@@ -82,7 +82,7 @@ public class FirstFragment extends Fragment {
                         @Override
                         public void onResult(List<LocalMedia> result) {
                             String path;
-                            if (Build.VERSION_CODES.CUR_DEVELOPMENT == Build.VERSION_CODES.Q) {
+                            if (Build.VERSION.SDK_INT == Build.VERSION_CODES.Q) {
                                 path = result.get(0).getAndroidQToPath();
                             } else {
                                 path = result.get(0).getPath();

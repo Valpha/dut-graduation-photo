@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +17,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.SpanUtils;
+import com.dlut.picturemaker.utils.ImageProcess;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.BuglyStrategy;
-import com.tencent.bugly.crashreport.CrashReport;
 
 import org.opencv.android.OpenCVLoader;
 
@@ -128,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-            startActivity(new Intent(this,ScrollingActivity.class));
+            startActivity(new Intent(this, AboutActivity.class));
             return true;
         }
 

@@ -9,7 +9,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.dlut.picturemaker.ImageProcess;
+import com.dlut.picturemaker.utils.ImageProcess;
 import com.dlut.picturemaker.data.DataBean;
 import com.xiaopo.flying.sticker.Sticker;
 
@@ -28,6 +28,7 @@ public class ImageViewModel extends ViewModel {
     private MutableLiveData<List<DataBean>> personList = new MutableLiveData<>();
     private MutableLiveData<List<Drawable>> drawableList = new MutableLiveData<>();
     private MutableLiveData<DataBean> chosedDataBean = new MutableLiveData<>();
+    private Uri uri;
 
 
     public Bitmap getImage() {
@@ -140,5 +141,13 @@ public class ImageViewModel extends ViewModel {
 
     public void setDrawableList(List<Drawable> pictures) {
         drawableList.setValue(pictures);
+    }
+
+    public void setFinishedImageUri(Uri uri) {
+        this.uri = uri;
+    }
+
+    public Uri getFinishedImageUri() {
+        return uri;
     }
 }
